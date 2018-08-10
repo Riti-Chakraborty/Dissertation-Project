@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Assignment3</title>
+
+<!-- Leaflet JS -->
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+
+<!-- Including the bootstrap CSS, jquery and javascript hyperlinks -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<!-- Highcharts and leaflet links -->
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<!-- CSS Styles -->
+<style>
+@import 'https://code.highcharts.com/css/highcharts.css';
+#chart {
+height: 500px;
+max-width: 800px;
+min-width: 320px;
+margin: 0 auto;
+}
+#map {
+height: 500px;
+max-width: 800px;
+min-width: 320px;
+margin: 0 auto;
+}
+</style>
+</head>
+
+<body >
+
+<!-- Division tags for putting and displaying the highcharts -->
+      <div class="container" style="border:1px solid black; background:#FFFFFF">
+		<div class="row mt-5">
+            <div class="col">
+			<h1 align=center> Assignment 3: Visualisation for Twitter Data </h1><h6 align=center> By: Riti Chakraborty, 17231417</h6>
+			<p><h2 align=center>1. <u>Pie Chart </u></h2><br><h6 align=center> (Hover on the chart to get details about the number of followers for each user).</h6> </p>	
+			  <div id="pie1" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto; border:2px solid black"></div>
+			  <br>
+			  <div id="pie_desc" > <p><i>Pie Chart: The above chart shows the percentage of number of followers to the total number of followers of the six users. From the chart it can be observed that UNICEF France has the most number of followers.</i></p></div>
+			  <br>
+			  <p><h2 align=center> 2. <u>Bar Graph</u></h2><br><h6 align=center> (Hover on the bars to get details about the number of favorites and retweet count for each user).</h6> </p>	
+              <div id="chart" style="min-width: 310px; max-width: 600px; min-height: 500px;  border:2px solid black"></div>
+			  <br>
+			  <div id="chart_desc" > <p><i>Bar Graph: The bar graph shown above illustrate the retweet count each user has made and the number favorites each user has. The blue bar shows the number of number of retweets made and the black bar shows the number of favourite marked by each user.</i></p></div>
+			  <br>		
+			  <p><h2 align=center> 3. <u>Leaflet Map</u></h2><br><h6 align=center> (Drag the map towards left and right and click on the icons to check the location of all the six users).</h6> </p>			  
+              <div id="map" style=" max-width: 600px; align= center; min-height: 500px;  border:2px solid black"></div>
+			  <br>
+			  <div id="map_desc" > <p><i>Leaflet map: The map above shows the location of the six users on the world map. On clicking the black bird icon on the map details of each locations are revealed.</i><br>
+			  <h5 align=center> <a href="Data_Visualisation_Assgn3_PythonCode.html"> Click here for the Python Code </a> </h5></p>
+			  <h5 align=center> <a href="Report_Riti_17231417.pdf"> Click here for the Report</a> </h5></p></div>
+			  
+			  <br>
+            </div>
+          </div>
+      </div>
+	<script>
+	
+// Build the Pie chart
+Highcharts.chart('pie1', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Displaying Users with their Followers Count '
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b> of total sum of followers count of each of 6 users'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: false
+            },
+            showInLegend: true
+        }
+    },
+    series: [{
+        name: 'Followers Count in %',
+        colorByPoint: true,
+        data: [{
+            name: 'User1: CryptoGaule',
+            y: 4267.0
+        }, {
+            name: 'User2: UNICEF France',
+            y: 179831.0,
+            sliced: true,
+            selected: true
+        }, {
+            name: 'User3: crypto currencies coin',
+            y: 4014.0
+        }, {
+            name: 'User4: AETOSWire',
+            y: 5607.0
+        }, {
+            name: 'User5: CryptoWorld',
+            y: 9792.0
+        }, {
+            name: 'User6: CyberHound ',
+            y: 4211.0
+        }]
+    }]
+});
+
+	</script>
+	
+
+	
+  <script>
+ //Building the bar chart
+Highcharts.chart('chart', {
+    chart: {
+        type: 'bar'
+    },
+    title: {
+        text: 'Retweet and Favorites Count'
+    },
+    
+    xAxis: {
+        categories: ['CryptoGaule', 'UNICEF France', 'crypto currencies coin', 'AETOSWire', 'CryptoWorld', 'CyberHound'],
+        title: {
+            text: null
+        }
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Retweet counts and Favorites count',
+            align: 'high'
+        },
+        labels: {
+            overflow: 'justify'
+        }
+    },
+   
+    plotOptions: {
+        bar: {
+            dataLabels: {
+                enabled: true
+            }
+        }
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'top',
+        x: -40,
+        y: 80,
+        floating: true,
+        borderWidth: 1,
+        backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+        shadow: true
+    },
+    credits: {
+        enabled: false
+    },
+    series: [{
+        name: 'Number of Retweet',
+        data: [14.0, 69.0, 6.0, 6.0, 6.0, 6.0]
+    }, {
+        name: 'Number of Favorites',
+        data: [16.0, 89.0, 6.0, 5.0, 5.0, 8.0]
+    }]
+});
+
+  </script>
+  
+ 
+  <script>
+	//Initialising the map with a pair of latitude and longitude.
+      var map = new L.Map('map', {center: new L.LatLng(53.27392, -9.05102), zoom: 2});
+      L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+	    {  minZoom: 2, maxZoom: 5, noWrap: false}).addTo(map);
+
+      var firefoxIcon = L.icon({
+          iconUrl: 'icon_1.png',
+          iconSize: [30, 25], // setting the size of the icon
+          });
+
+		  //The coordinates of the location.
+      L.marker([46.227638,2.213749], {icon: firefoxIcon}).bindPopup('User1 & User2 from France').addTo(map);   
+      L.marker([56.130366,-106.346771], {icon: firefoxIcon}).bindPopup('User3 from Canada').addTo(map);
+      L.marker([23.424076,53.847818], {icon: firefoxIcon}).bindPopup('User4 from UAE').addTo(map);
+      L.marker([7.873054,80.771797], {icon: firefoxIcon}).bindPopup('User5 from Sri Lanka').addTo(map);
+      L.marker([-25.274398,133.775136 ], {icon: firefoxIcon}).bindPopup('User6 from Australia').addTo(map);
+      L.marker([18.220833,-66.590149], {icon: firefoxIcon}).bindPopup('User7 from Puerto Rico').addTo(map);
+
+  </script>
+</body>
+
+</html>
